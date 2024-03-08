@@ -82,7 +82,7 @@ function TaskList() {
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
     >
-      <div className="flex h-96 w-80 flex-col items-start p-5 md:h-96 md:w-96">
+      <div className="flex h-96 w-80 flex-col items-start p-5 md:h-96 md:w-96 ">
         <div className="h-1/4 w-full">
           <h1 className="text-lg font-bold">Today's to-do list! 🐱‍🏍</h1>
 

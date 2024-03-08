@@ -12,7 +12,7 @@ const ICONS = {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="mx-auto mb-1 block h-10 w-10 pt-1 text-2xl"
+      className="mx-auto mb-1 block h-10 w-10 pt-1 text-2xl dark:text-white dark:hover:text-inherit"
     >
       <path
         strokeLinecap="round"
@@ -28,7 +28,7 @@ const ICONS = {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="mx-auto mb-1 block h-10 w-10 pt-1 text-2xl"
+      className="mx-auto mb-1 block h-10 w-10 pt-1 text-2xl dark:text-white dark:hover:text-inherit"
     >
       <path
         strokeLinecap="round"
@@ -44,7 +44,7 @@ const ICONS = {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="mx-auto mb-1 block h-10 w-10 pt-1 text-2xl"
+      className="mx-auto mb-1 block h-10 w-10 pt-1 text-2xl dark:text-white dark:hover:text-inherit"
     >
       <path
         strokeLinecap="round"
@@ -59,7 +59,7 @@ function PlaybackButton({ type, onClick, disabled }: PlaybackButtonProps) {
   return (
     <div className="group flex-1">
       <button
-        className="mx-auto flex w-full items-end justify-center px-2 pt-2 text-center text-gray-400 group-hover:text-rose-400"
+        className="mx-auto flex w-full items-end justify-center px-2 pt-2 text-center text-gray-400 group-hover:text-rose-400 dark:text-white"
         onClick={onClick}
         disabled={disabled || false}
       >

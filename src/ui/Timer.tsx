@@ -3,7 +3,7 @@ import { useGlobalContext } from "../hooks/useGlobalContext";
 function Timer() {
   const { status, counting } = useGlobalContext();
   return (
-    <div className="text-center">
+    <div className="text-center dark:text-rose-50">
       <p className="text-2xl">{status === "work" && "Let's work! 📝"}</p>
       <p className="mb-2 text-2xl">
         {status === "break" && "Great work, let's take a short break ☕"}

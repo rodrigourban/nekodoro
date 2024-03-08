@@ -22,9 +22,9 @@ function SettingsButtonGroup() {
       </button>
       <Modal>
         <Modal.Open opens="settings">
-          <button className="group relative text-2xl">
+          <button className="group relative text-2xl dark:text-white">
             Settings
-            <span className="absolute -bottom-1 left-0 h-1 w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute -bottom-1 left-0 h-1 w-0 bg-black transition-all duration-300 group-hover:w-full dark:bg-white"></span>
           </button>
         </Modal.Open>
 

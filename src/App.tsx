@@ -4,7 +4,7 @@ import { GlobalProvider } from "./hooks/useGlobalContext";
 
 function App() {
   return (
-    <div className="background-texture font-customFont min-h-svh">
+    <div className="background-texture dark:background-texture-dark dark:text-red min-h-svh font-customFont">
       <GlobalProvider>
         <Home />
       </GlobalProvider>

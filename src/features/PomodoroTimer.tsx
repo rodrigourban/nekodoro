@@ -8,6 +8,7 @@ import TimerButtonGroup from "../ui/TimerButtonGroup";
 import SettingsButtonGroup from "../ui/SettingsButtonGroup";
 import AudioButtonGroup from "../ui/AudioButtonGroup";
 import Clock from "../ui/Clock";
+import DarkModeSwitcher from "../ui/DarkModeSwitcher";
 
 export function PomodoroTimer() {
   const { updatePermissions, isPlayingRain } = useGlobalContext();
@@ -20,6 +21,7 @@ export function PomodoroTimer() {
     <div
       className={`${isPlayingRain ? "rain" : ""} relative flex h-svh flex-col items-center justify-between p-5`}
     >
+      <DarkModeSwitcher />
       <TaskListModal />
       <CurrentTask />
       <div className="h-4/5">

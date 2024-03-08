@@ -4,7 +4,7 @@ function LoopCheckbox() {
   const { isLooping, toggleLoop } = useGlobalContext();
   return (
     <div className="group flex-1">
-      <div className="mx-auto flex w-full items-end justify-center pt-2 text-center text-gray-400 group-hover:text-rose-400">
+      <div className="mx-auto flex w-full items-end justify-center pt-2 text-center text-gray-400 group-hover:text-rose-400 dark:text-white">
         <span className="block pt-2.5">
           <input
             type="checkbox"
