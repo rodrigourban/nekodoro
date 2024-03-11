@@ -54,7 +54,11 @@ export function reducer(
       };
 
     case "timer/decrease":
-      return { ...state, timerValue: state.timerValue - 1 };
+      return {
+        ...state,
+        timerValue: state.timerValue - 1,
+        counting: state.isLooping || state.timerValue - 1 > 0,
+      };
 
     case "timer/change-time":
       return { ...state, timerValue: action.payload };

@@ -1,7 +1,24 @@
+import { useEffect } from "react";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Timer() {
-  const { status, counting } = useGlobalContext();
+  const { status, counting, decreaseTimer } = useGlobalContext();
+
+  useEffect(
+    function () {
+      let timeoutId: NodeJS.Timeout | undefined;
+      if (counting) {
+        timeoutId = setInterval(function () {
+          decreaseTimer();
+        }, 1000);
+      }
+      return () => {
+        if (timeoutId) clearInterval(timeoutId);
+      };
+    },
+    [counting, decreaseTimer],
+  );
+
   return (
     <div className="text-center dark:text-rose-50">
       <p className="text-2xl">{status === "work" && "Let's work! 📝"}</p>

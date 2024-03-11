@@ -67,6 +67,7 @@ export type StateProps = {
   resumeTimer: () => void;
   pauseTimer: () => void;
   resetTimer: () => void;
+  decreaseTimer: () => void;
   updateSettings: (payload: SettingsType) => void;
   toggleLoop: () => void;
   toggleMusic: () => void;

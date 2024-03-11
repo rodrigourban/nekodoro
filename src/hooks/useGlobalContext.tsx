@@ -29,6 +29,7 @@ const initialState: StateProps = {
   resumeTimer: () => {},
   pauseTimer: () => {},
   resetTimer: () => {},
+  decreaseTimer: () => {},
   updateSettings: () => {},
   toggleLoop: () => {},
   toggleMusic: () => {},
@@ -64,14 +65,12 @@ const GlobalProvider = ({ children }: PropsWithChildren) => {
     shortBreak,
     longBreak,
     cycleNumber,
-    isLooping,
     allowNotifications,
     isPlayingMusic,
     isPlayingRain,
     musicVolume,
     rainVolume,
     taskList,
-    counting,
   } = context;
 
   const notificationAudio = useRef<HTMLAudioElement>(
@@ -128,6 +127,21 @@ const GlobalProvider = ({ children }: PropsWithChildren) => {
   }
   function resetTimer() {
     dispatch({ type: "timer/reset" });
+  }
+
+  function decreaseTimer() {
+    if (timerValue <= 0) {
+      if (status === "work") {
+        if (cycleNumber === 3) dispatch({ type: "timer/long-break" });
+        else dispatch({ type: "timer/break" });
+      }
+      if (status === "break" || status === "long-break") {
+        dispatch({ type: "timer/work" });
+      }
+      playAudio();
+    } else {
+      dispatch({ type: "timer/decrease" });
+    }
   }
 
   function takeShortBreak() {
@@ -191,30 +205,6 @@ const GlobalProvider = ({ children }: PropsWithChildren) => {
     [isPlayingRain, rainVolume],
   );
 
-  useEffect(
-    function () {
-      let timeoutId: number | undefined;
-      if (timerValue > 0 && counting) {
-        timeoutId = setTimeout(function () {
-          dispatch({ type: "timer/decrease" });
-        }, 1000);
-      }
-      if (timerValue <= 0) {
-        if (status === "work") {
-          if (cycleNumber === 3) dispatch({ type: "timer/long-break" });
-          else dispatch({ type: "timer/break" });
-        }
-        if (status === "break" || status === "long-break")
-          dispatch({ type: "timer/work" });
-        playAudio();
-      }
-      return () => {
-        if (timeoutId) clearTimeout(timeoutId);
-      };
-    },
-    [status, timerValue, isLooping, counting, cycleNumber],
-  );
-
   async function notify(notificationText: string) {
     const notification = await new Notification(notificationText);
     await notification.close();
@@ -249,6 +239,7 @@ const GlobalProvider = ({ children }: PropsWithChildren) => {
         resumeTimer,
         pauseTimer,
         resetTimer,
+        decreaseTimer,
         updateSettings,
         toggleLoop,
         toggleMusic,
