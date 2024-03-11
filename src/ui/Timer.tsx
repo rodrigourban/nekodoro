@@ -6,7 +6,7 @@ function Timer() {
 
   useEffect(
     function () {
-      let timeoutId: NodeJS.Timeout | undefined;
+      let timeoutId: ReturnType<typeof setInterval>;
       if (counting) {
         timeoutId = setInterval(function () {
           decreaseTimer();
