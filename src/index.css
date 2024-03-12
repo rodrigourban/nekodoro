@@ -21,7 +21,7 @@ body {
     
     .rain {
         height: 100svh;
-        background-image: url(rain.png);
+        background-image: url("rain.png");
         animation: rain 0.45s linear infinite;
     }
 }

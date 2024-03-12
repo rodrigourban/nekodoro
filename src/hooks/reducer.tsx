@@ -57,7 +57,7 @@ export function reducer(
       return {
         ...state,
         timerValue: state.timerValue - 1,
-        counting: state.isLooping || state.timerValue - 1 > 0,
+        counting: state.timerValue > 0,
       };
 
     case "timer/change-time":

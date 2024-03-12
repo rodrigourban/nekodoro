@@ -6,18 +6,18 @@ function Timer() {
 
   useEffect(
     function () {
-      let timeoutId: ReturnType<typeof setInterval>;
       if (counting) {
-        timeoutId = setInterval(function () {
+        const timeoutId = setInterval(function () {
           decreaseTimer();
         }, 1000);
+        return () => {
+          clearInterval(timeoutId);
+        };
       }
-      return () => {
-        if (timeoutId) clearInterval(timeoutId);
-      };
     },
     [counting, decreaseTimer],
   );
+  console.log(status);
 
   return (
     <div className="text-center dark:text-rose-50">
