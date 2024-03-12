@@ -17,7 +17,6 @@ function Timer() {
     },
     [counting, decreaseTimer],
   );
-  console.log(status);
 
   return (
     <div className="text-center dark:text-rose-50">

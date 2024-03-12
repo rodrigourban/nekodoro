@@ -19,7 +19,7 @@ export function PomodoroTimer() {
 
   return (
     <div
-      className={`${isPlayingRain ? "animate-[rain_0.45s_linear_infinite] bg-[url('rain.png')]" : ""} relative flex h-svh flex-col items-center justify-between p-5`}
+      className={`${isPlayingRain ? "animate-[rain_0.45s_linear_infinite] bg-[url('./rain.png')]" : ""} relative flex h-svh flex-col items-center justify-between p-5`}
     >
       <DarkModeSwitcher />
       <TaskListModal />
