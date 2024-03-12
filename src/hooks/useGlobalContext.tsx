@@ -65,7 +65,6 @@ const GlobalProvider = ({ children }: PropsWithChildren) => {
     shortBreak,
     longBreak,
     cycleNumber,
-    allowNotifications,
     isPlayingMusic,
     isPlayingRain,
     musicVolume,
@@ -134,9 +133,11 @@ const GlobalProvider = ({ children }: PropsWithChildren) => {
       if (status === "work") {
         if (cycleNumber === 3) dispatch({ type: "timer/long-break" });
         else dispatch({ type: "timer/break" });
+        notify("Great job! Take a rest!");
       }
       if (status === "break" || status === "long-break") {
         dispatch({ type: "timer/work" });
+        notify("Let's get back to work!");
       }
       playAudio();
     } else {
@@ -209,19 +210,6 @@ const GlobalProvider = ({ children }: PropsWithChildren) => {
     const notification = await new Notification(notificationText);
     await notification.close();
   }
-
-  useEffect(
-    function () {
-      if (allowNotifications === "granted" && timerValue <= 0) {
-        const notificationText =
-          status === "work"
-            ? "Great job! Take a rest!"
-            : "Let's get back to work!";
-        notify(notificationText);
-      }
-    },
-    [allowNotifications, timerValue, status],
-  );
 
   // save tasklist if it has changed
   useEffect(
